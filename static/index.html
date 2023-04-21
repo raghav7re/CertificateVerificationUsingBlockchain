@@ -37,6 +37,7 @@
     <script src ="./ref1.js"  type="module" ></script>
     <script src ="./ref4.js"  type="module" ></script>
     <script src ="./wref.js"  type="module" ></script>
+    <script src ="./ipfsref.js"  type="module" ></script>
 
 <button id ="ConnectButton">Connect</button>
 <button id ="balanceof">Balanceof</button>
@@ -92,12 +93,14 @@
         
     </script>
     -->
-    <form enctype="multipart/form-data" action="/upload" method="post">
-        <input id="input" type="file" />
+    <form enctype="multipart/form-data"  method="post">
+        <input id="input" type="file" name="file"/>
       </form>
-      <button id="ipfssubmit">sumbit</button>
+      <button id="ipfssubmit">submit</button>
+    <br><br>
+    <br>
+    <button type="button" id="downloadFile">Download</button>
+      
+    </body>
     
-
-
-</body>
 </html>

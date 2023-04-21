@@ -7,8 +7,8 @@ console.log(file1)
 
 var sha256File = require('sha256-file');
 
-const ipsum =document.getElementById("ipfssubmit")
-ipsum.onclick=ipfun();
+// const ipsum =document.getElementById("ipfssubmit")
+// ipsum.onclick=ipfun();
 let file = document.getElementById('input').files[0];
 
 let formData = new FormData();

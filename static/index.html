@@ -4,8 +4,27 @@
 <title>Title</title>
 </head>
 <body>
+    <!-- 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" type="module">
+
+    </script>
+    <script src="require.js" ></script>
+    <script>
+    require(['config'], function() {
+        // Configuration loaded now, safe to do other require calls
+        // that depend on that config.
+        require(['foo'], function(foo) {
+    
+        });
+    });
+    </script>
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client/dist/index.min.js"></script>
+
+    <script src="https://unpkg.com/ipfs-http-client/dist/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js">
+    
 
 
     window.addEventListener('load', function() {
@@ -14,7 +33,7 @@
   });
     </script>
 
-    <script src ="./ref.js"  type="module" >
+    <script src ="../ref.js"  type="module" >
         
         // const Web3 = require('web3');
 
@@ -93,14 +112,16 @@
         
     </script>
     -->
-    <form enctype="multipart/form-data"  method="post">
-        <input id="input" type="file" name="file"/>
-      </form>
-      <button id="ipfssubmit">submit</button>
-    <br><br>
-    <br>
-    <button type="button" id="downloadFile">Download</button>
-      
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+      <label for="file">Choose a file to upload:</label><br>
+      <input type="file" name="file"><br><br>
+      <input type="submit" value="Upload">
+    </form>
+    <hr>
+    <form action="/download" method="GET">
+        <input type="text" name="hash" placeholder="Enter file hash" />
+        <button type="submit">Download</button>
+    </form>
     </body>
     
 </html>

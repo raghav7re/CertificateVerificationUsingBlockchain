@@ -1,6 +1,7 @@
 import { ethers } from "./ether.min.js";
 //import { Web3 } from "./web3.min.js";
 import { abicode,smartcontractadd } from "./acc.js";
+import { abicode3,smartcontractadd3 } from "./acc3.js";
 
 const ConnectButton =document.getElementById("ConnectButton")
 const balance =document.getElementById("balanceof")
@@ -40,6 +41,8 @@ async function balanceOf ()
     //console.log(ethers.utils.formatEther(bl));
     
     var contract= new ethers.Contract(smartcontractadd,abicode,provider);
+    var contract3= new ethers.Contract(smartcontractadd3,abicode3,provider);
+    
 
     try {
         //const balanceOf1 =await contract.balanceOf("0x71d64f058CD062F8c4Ec51c86A8295058Cc0F6C1");
@@ -63,7 +66,7 @@ async function transfer (addres)
     const signer =provider.getSigner();
     console.log(signer);
     var bl =provider.getBalance("ethers.eth");
-    console.log(provider.getBlockNumber());
+    //console.log(provider.getBlockNumber());
 
     //console.log(ethers.utils.formatEther(bl));
     

@@ -4,27 +4,40 @@
 <title>Title</title>
 </head>
 <body>
-    
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js">
+
+
+    window.addEventListener('load', function() {
+    const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+    // Use the web3 object here
+  });
+    </script>
+
     <script src ="./ref.js"  type="module" >
         
-        const Web3 = require('web3');
+        // const Web3 = require('web3');
 
 
-        var contractt =new web3.eth.Contract(abicode, smartcontractadd);
-        console.log(contractt);
-        var IsMetamask =  CheckMetamaskConnection();
+        // var contractt =new web3.eth.Contract(abicode, smartcontractadd);
+        // console.log(contractt);
+        // var IsMetamask =  CheckMetamaskConnection();
         
         
-        if(true)
-        {
-        console.log("I see a metamask");
-        }
-        else
-        {
-            console.log("metamask not here");
-        }
+        // if(true)
+        // {
+        // console.log("I see a metamask");
+        // }
+        // else
+        // {
+        //     console.log("metamask not here");
+        // }
     
     </script>
+    <script src ="./ref1.js"  type="module" ></script>
+    <script src ="./ref4.js"  type="module" ></script>
+    <script src ="./wref.js"  type="module" ></script>
+
 <button id ="ConnectButton">Connect</button>
 <button id ="balanceof">Balanceof</button>
 
@@ -35,11 +48,11 @@
     <button id="totalsupply">total supply</button>
     
 
-    <button >approve</button>
+    <button id="ADCT">approve</button>
     <input type="text" id="sname" name="firstname" >
     <input type="text" id="tname" name="lastname" ><br><br>
 
-    <button >transfer</button>
+    <button id="VFCT">verify</button>
     <input type="text" id="aname" name="firstname" >
     <input type="text" id="tname" name="lastname" ><br><br>
 
@@ -54,29 +67,35 @@
     <button >approve and call</button>
     <input type="text" id="fname" name="firstname" >
     <input type="text" id="lname" name="lastname" ><br><br>
+    <!--
+
     
     <form action ="/upload" method="POST" enctype="multipart/form-data">
         <label>filename</label>
-        <input type="text" name="fileName">
+        <input id='input' type="text" name="fileName">
         <br><br>
         <label>file</label>
-        <input type="file" name="file">
+        <input id='input' type="file" name="file">
         <br><br>
-        <input type="submit" value="Submit">
+        <input id='input' type="submit" value="Submit">
 
 
     </form>
     <br><br>
-
+-->
     <p>Click on the "Choose File" button to upload a file:</p>
    <!--  <button id ="ConnectButton" onclick="CheckMetamaskConnection()">Connect</button>
-        -->
+        
     <input type="file" id="myfile" onchange="onMyfileChange(this)" />
     <script src="https://unpkg.com/jszip@3.7.1/dist/jszip.js" type="text/javascript"></script>
     <script type="text/javascript">
         
     </script>
-
+    -->
+    <form enctype="multipart/form-data" action="/upload" method="post">
+        <input id="input" type="file" />
+      </form>
+      <button id="ipfssubmit">sumbit</button>
     
 
 

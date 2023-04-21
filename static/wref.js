@@ -46,7 +46,8 @@ async function AddCertificates ()
         //const balanceOf1 =await contract.balanceOf("0x71d64f058CD062F8c4Ec51c86A8295058Cc0F6C1");
         // let text = "Hello World!"
 
-        await Contract3.methods.addCertificate().send({from:web3.utils.toChecksumAddress(account)},function(err, result){
+
+        await contract3.methods.addCertificate(await sha256d("Cert4"),await sha256d("HackerRank"),await sha256d("1")).send({from:web3.utils.toChecksumAddress(account)},function(err, result){
             console.log(result);
          });
 
@@ -71,14 +72,15 @@ async function AddCertificates ()
          let account = accounts[0];
 
 
-         
+         const hash = await sha256d("Cert1");
+         console.log('SHA-256 hash:', hash);
      
          //console.log(ethers.utils.formatEther(bl));
          
          var  contract3= new web3.eth.Contract(abicode3,smartcontractadd3);
          
 
-         await contract3.methods.verifyCertificates('0xf316ccc351e03cb1af6d23c7a5ced219e31cf09785fd80c62a5f3839865bbdc3').call({from:web3.utils.toChecksumAddress(account)},function(err, result){
+         await contract3.methods.verifyCertificates(await sha256d("Cert4")).call({from:web3.utils.toChecksumAddress(account)},function(err, result){
             console.log(result);
          });  
 
@@ -96,3 +98,28 @@ async function AddCertificates ()
     }
 }
 
+async function sha256d(data) {
+    const buffer = new TextEncoder().encode(data);
+    const hash = await crypto.subtle.digest('SHA-256', buffer);
+    const hashArray = Array.from(new Uint8Array(hash));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return "0x"+hashHex;
+  }
+
+function sha256(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const buffer = reader.result;
+        const hash = crypto.subtle.digest('SHA-256', buffer);
+        hash.then((digest) => {
+          const hashArray = Array.from(new Uint8Array(digest));
+          const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+          resolve(hashHex);
+        }).catch((err) => {
+          reject(err);
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }
